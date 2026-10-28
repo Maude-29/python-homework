@@ -52,12 +52,28 @@ def random_fruit(snake):
 
 # --- la boucle de jeu --------------------------------------------------------
 
+def draw_tile(screen, tile, color):
+    x, y = tile
+    rect = pg.Rect(x*W, y*H, W, H)
+    pg.draw.rect(screen, color, rect)
+
+def draw(screen, snake): # utilisation de fruit ?
+    screen.fill((255,255,255))
+    for x in range(X):
+        for y in range(Y):
+            if (x + y) % 2:
+                rect = pg.Rect(x*W, y*H, W, H)
+                pg.draw.rect(screen, (0,0,0), rect)
+    for tile in snake:
+        draw_tile(screen, tile, (0,255,0))
 
 def main():
     running = True
     pg.init()
     screen = pg.display.set_mode((600, 600))
     clock = pg.time.Clock()
+
+    snake=[(10,15), (11,15), (12,15)]
 
     # while True:
     while running:
@@ -72,13 +88,7 @@ def main():
             # pass
 
         # 2. l'état (rien pour l'instant)
-        screen.fill((255,255,255))
-        for x in range(X):
-            for y in range(Y):
-                if (x + y) % 2:
-                    rect = pg.Rect(x*W, y*H, W, H)
-                    pg.draw.rect(screen, (0,0,0), rect)
-
+        draw(screen, snake)
         # 3. l'affichage : on prépare l'image en mémoire...
         # screen.fill((randint(0, 255), randint(0, 255), randint(0, 255)))
         pg.display.update()
@@ -90,15 +100,3 @@ def main():
 # pas quand un autre fichier fait `import snake` (les tests, par ex.).
 if __name__ == "__main__":
     main()
-
-# for j in range (30):
-#             p1 = 0
-#             for i in range (30):
-#                 rect = pg.Rect(p1, p2, 20, 20)     
-#                 pg.draw.rect(screen, (255, 255, 255), rect)  
-#                 pg.display.update()
-#                 p1 = p1 + 40
-#         p2 = p2 + 20
-#         rect = pg.Rect(p1, p2, 20, 20)     
-#         pg.draw.rect(screen, (255, 255, 255), rect)  
-#         pg.display.update()
