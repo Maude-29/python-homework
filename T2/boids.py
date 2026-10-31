@@ -7,8 +7,8 @@ Lancez-le avec :  uv run boids.py
 Testez-le avec :  uv run pytest
 """
 
-import math  # noqa: F401 (servira à l'étape 2)
-import random  # noqa: F401 (servira à l'étape 4)
+import math
+import random
 from pathlib import Path
 
 import arcade
@@ -153,6 +153,9 @@ class MyWindow(arcade.Window):
         everything.extend(self.obstacles)
         everything.extend(self.boids)
 
+        self.sky = arcade.SpriteList()
+        self.sky.append(arcade.Sprite(SKY, WIDTH / 2, HEIGHT / 2))
+
     def on_update(self, delta_time):
         # print("on_update", delta_time)
         # self.boids[0].center_x += 2
@@ -178,10 +181,10 @@ class MyWindow(arcade.Window):
     def on_draw(self):
         # print("on_draw")  
         self.clear()
+        self.sky.draw()
         self.obstacles.draw()
         self.boids.draw()
-
-
+        
 def main():
     MyWindow()
     arcade.run()
