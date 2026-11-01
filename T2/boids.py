@@ -20,7 +20,7 @@ BACKGROUND = arcade.color.ALMOND
 HERE = Path(__file__).parent
 ARROW = HERE / "media" / "arrow.png"
 OBSTACLE = HERE / "media" / "obstacle.png"
-SKY = HERE / "media" / "sky.png"  # le décor (étape 9)
+SKY = HERE / "media" / "my_sky.jpg"  # le décor (étape 9)
 
 SPEED = 100  # pixels par seconde (étape 2)
 TURN_SPEED = 180  # degrés par seconde, tant qu'une flèche est enfoncée (étape 5)
@@ -154,7 +154,7 @@ class MyWindow(arcade.Window):
         everything.extend(self.boids)
 
         self.sky = arcade.SpriteList()
-        self.sky.append(arcade.Sprite(SKY, center_x=WIDTH / 2, center_y=HEIGHT / 2))
+        self.sky.append(arcade.Sprite(SKY, width = WIDTH, height = HEIGHT, center_x=WIDTH / 2, center_y=HEIGHT / 2))
 
     def on_update(self, delta_time):
         # print("on_update", delta_time)
