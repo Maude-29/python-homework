@@ -154,7 +154,7 @@ class MyWindow(arcade.Window):
         everything.extend(self.boids)
 
         self.sky = arcade.SpriteList()
-        self.sky.append(arcade.Sprite(SKY, WIDTH / 2, HEIGHT / 2))
+        self.sky.append(arcade.Sprite(SKY, center_x=WIDTH / 2, center_y=HEIGHT / 2))
 
     def on_update(self, delta_time):
         # print("on_update", delta_time)
